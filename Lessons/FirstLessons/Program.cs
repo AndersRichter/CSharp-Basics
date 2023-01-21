@@ -184,6 +184,7 @@ namespace FirstLessons
             
             // ********** Read key **********
             // ConsoleKey consoleKey = Console.ReadKey().Key;
+            // char consoleChar = Console.ReadKey().KeyChar;
             
             
             // ********** Console Clear **********
@@ -290,6 +291,17 @@ namespace FirstLessons
             // FirstOrDefault() is the safe version of First(), because First() will crash program if it can't find element
             int searchResult6 = initializedArray.Where(element => element >= 5).FirstOrDefault();
             int searchResult7 = initializedArray.LastOrDefault(element => element >= 5); // same as Array.FindLast();
+            
+            // Resize
+            int[] arrayToResize = { 1, 2, 3, 4, 5 };
+            Array.Resize(ref arrayToResize, 10); // 1, 2, 3, 4, 5, 0, 0, 0, 0, 0
+            Array.Resize(ref arrayToResize, 3); // 1, 2, 3
+            
+            // Copy array by value not by reference
+            int[] baseArray = { 1, 2, 3 };
+            int[] targetArray = new int[baseArray.Length];
+            Array.Copy(baseArray, targetArray, baseArray.Length);
+            baseArray.CopyTo(targetArray, 0);
             
             
             // ********** Two dimensional array **********
