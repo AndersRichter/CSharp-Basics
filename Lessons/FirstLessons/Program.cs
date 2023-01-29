@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace FirstLessons
@@ -370,10 +369,17 @@ namespace FirstLessons
             fiveDimensionalArray[1, 0, 4, 2, 5] = 99;
             int[][][] jaggedThreeDimensionalArray = new int[3][][]; // one dimensional array contains 3 one dim arrays of one dim arrays
             
+            
             // ********** Random **********
             Random newRandom = new Random();
             Console.WriteLine($"\nRandom values: {newRandom.Next()}, {newRandom.Next()}, {newRandom.Next()}");
             Console.WriteLine($"Random values with limits: {newRandom.Next(10)}, {newRandom.Next(1, 5)}, {newRandom.Next(50, 100)}\n");
+            
+            
+            // ********** Guid **********
+            // type for unique ids
+            Guid id = Guid.NewGuid(); // 0d09c1b0-92dc-415f-aa11-a3d034af5632 - example
+            Console.WriteLine($"\nGuid - {id}");
         }
     }
 }
