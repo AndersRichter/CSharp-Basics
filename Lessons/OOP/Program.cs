@@ -76,6 +76,27 @@ namespace OOP
         // the shortest way to declare property - auto property
         // work exactly in the same way as PriceProperty above but without separate private field
         public int ShortProperty { get; set; }
+        
+        // example with private set
+        public int ShortPropertyPrivateSet { get; private set; }
+
+        // array property with private set
+        // !! BUT !! array - reference type, so when we get array value in main program we can change it DESPITE OF PRIVATE SET !!
+        // for example remove values
+        // so it's good practice to keep all reference type fields as private and create public getters for copy them by value
+        // or just getByIndex method
+        public int[] ArrayProperty { get; private set; } = { 1, 2, 3 };
+
+        // with logic in getter we can transform property to something like computed in mobx
+        public bool IsArray
+        {
+            get
+            {
+                return ArrayProperty.Length > 0;
+            }
+            // or new syntax
+            // get => ArrayProperty.Length > 0;
+        }
 
         // we have access to static fields from class, not from class exemplar.
         // Static fields are "shared" for all class exemplars and can be used for storing some shared information
@@ -388,9 +409,15 @@ namespace OOP
             squareChild.PrintStaticField(); // parent method
             // squareChild.protectedField; // error - Cannot access protected field 'protectedField' here
 
+            // Upcasting - assign child class to variable with parent class type
             Square baseSquare = new SquareChild(); // it also works, because SquareChild is the Square class too, but: ↓
             // baseSquare.PrintThatIsChild(); // error - baseSquare contains only fields and methods of Square, not SquareChild
             // it can be useful, for example, if method works with parent class, then it will work with child class
+            
+            // Dawncasting - assign parent class to variable with child class type
+            SquareChild squareChildDown = (SquareChild)baseSquare; // don't work without explicit casting
+            // BUT, child class must be assigned before Dawncasting to parent class variable through the Upcasting
+            // otherwise, we will have bugs when we will try to get fields of child class which don't exist in parent
 
             // as object is the base parent class for all other data types, we can assign any class to it,
             // but such a class will have only base methods for object
@@ -423,6 +450,14 @@ namespace OOP
             if (objectSquare is SquareChild)
             {
                 SquareChild squareSquareChild3 = (SquareChild)objectSquare; // now it is safe
+            }
+            
+            // or we can use switch case if we have different possible results
+            switch (objectSquare)
+            {
+                case SquareChild sqChild:
+                    sqChild.PrintThatIsChild();
+                    break;
             }
             
             

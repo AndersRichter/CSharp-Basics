@@ -258,6 +258,10 @@ namespace LessonsPartTwo
 
                 return result;
             }
+
+            FuncWithArgs(5, 4);
+            // we can skip optional arg "logging" by entering the name of needed arg
+            FuncWithArgs(5, 4, c: 6);
             
             
             // ********** Pass arguments by name **********

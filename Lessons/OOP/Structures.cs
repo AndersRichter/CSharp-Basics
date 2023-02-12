@@ -31,6 +31,12 @@ namespace OOP
             Y = y;
         }
         // struct can have constructor with parameters (and CAN'T without them) and init variables there
+
+        // in constructor we always need to init ALL fields, but we also can call default constructor to init rest of the fields
+        public StructPoint(int x) : this()
+        {
+            X = x;
+        }
         public int X { get; set; }
         public int Y { get; set; }
 

@@ -83,6 +83,9 @@ namespace FirstLessons
             Console.WriteLine(fullFullString);
             
             
+            // ********** String repeat **********
+            string longString = new string('-', 10); // "-" symbol 10 times
+            
             // ********** Type converting **********
             string correctString = "5";
             int convertedNumber = Convert.ToInt32(correctString);
@@ -190,6 +193,21 @@ namespace FirstLessons
             // Console.Clear();
             
             
+            // ********** Console Backspace **********
+            // Console.Write("\b \b"); - deletes the last char and moves the caret back.
+            // one \b backspace escape character moves the caret back
+            
+            
+            // ********** Console colors **********
+            // Console.ForegroundColor = ConsoleColor.Blue; // text color
+            // Console.BackgroundColor = ConsoleColor.Green; // text background color
+            
+            
+            // ********** Console size **********
+            // Console.WindowHeight = 10;
+            // Console.WindowWidth = 35;
+
+
             // ********** Cycle WHILE **********
             int value = 4;
             while (value >= 0)
@@ -290,6 +308,11 @@ namespace FirstLessons
             // FirstOrDefault() is the safe version of First(), because First() will crash program if it can't find element
             int searchResult6 = initializedArray.Where(element => element >= 5).FirstOrDefault();
             int searchResult7 = initializedArray.LastOrDefault(element => element >= 5); // same as Array.FindLast();
+
+            int[] firstThreeElements = initializedArray.Take(3).ToArray(); // { 1, 5, 7 } - get first 3 elements of array
+            int[] firstElementsBelow = initializedArray.TakeWhile(item => item < 7).ToArray(); // { 1, 5 } - get elements until condition is true
+            int[] lastThreeElements = initializedArray.Skip(3).ToArray(); // { 8, 5, 1 } - skip 3 elements of array and get the rest of them
+            int[] lastElementsAbove = initializedArray.SkipWhile(item => item < 7).ToArray(); // { 7, 8, 5, 1 } - skip elements while true and get the rest of them
             
             // Resize
             int[] arrayToResize = { 1, 2, 3, 4, 5 };
@@ -301,6 +324,12 @@ namespace FirstLessons
             int[] targetArray = new int[baseArray.Length];
             Array.Copy(baseArray, targetArray, baseArray.Length);
             baseArray.CopyTo(targetArray, 0);
+            
+            // string actually is array of chars
+            string arrayString = "test";
+            char arrayChar = arrayString[1]; // 'e'
+            // BUT string is READONLY array
+            // arrayString[1] = 'f'; // error
             
             
             // ********** Two dimensional array **********
@@ -374,6 +403,8 @@ namespace FirstLessons
             Random newRandom = new Random();
             Console.WriteLine($"\nRandom values: {newRandom.Next()}, {newRandom.Next()}, {newRandom.Next()}");
             Console.WriteLine($"Random values with limits: {newRandom.Next(10)}, {newRandom.Next(1, 5)}, {newRandom.Next(50, 100)}\n");
+            // we can create Random and get value immediately
+            int randomValue = (new Random()).Next();
             
             
             // ********** Guid **********
